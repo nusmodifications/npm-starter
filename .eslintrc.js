@@ -3,18 +3,8 @@ module.exports = {
   root: true,
   extends: [
     'airbnb-base',
-    'plugin:flowtype/recommended',
   ],
-  env: {
-    browser: true,
-    node: true,
-  },
-  globals: {
-    expect: true,
-    it: true,
-  },
   plugins: [
-    'flowtype',
     'import',
   ],
   settings: {
@@ -23,6 +13,12 @@ module.exports = {
         config: 'webpack.config.js',
       },
     },
+  },
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+    jest: true,
   },
   rules: {
     'arrow-body-style': 'off',
