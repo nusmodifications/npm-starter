@@ -1,14 +1,8 @@
-'use strict';
-
 const webpack = require('webpack');
 
 const env = process.env.NODE_ENV;
 const config = {
-  resolve: {
-    root: ['lib'],
-    extensions: ['', '.js'],
-    moduleDirectories: ['node_modules'],
-  },
+  entry: './src',
   output: {
     library: 'npm-starter',
     libraryTarget: 'umd',
@@ -17,13 +11,13 @@ const config = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel',
+        include: /src/,
+        loader: 'babel-loader',
         query: {
-          cacheDirectory: true
+          cacheDirectory: true,
         },
       },
-    ]
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -42,11 +36,10 @@ if (env === 'production') {
         drop_console: true,
       },
       mangle: {
-        screw_ie8 : true,
+        screw_ie8: true,
         keep_fnames: true,
       },
-    })
-  );
+    }));
 }
 
 module.exports = config;
